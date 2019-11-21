@@ -19,10 +19,18 @@ class Calculator {
 
     appendNumber(number) {
         if(number === '.' && this.currentOperand.includes('.')) return
-        if(number === '±') return (-1 * currentOperandTextElement);
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
+    changeSign() {
+        if (this.currentOperand === '') return
+        this.currentOperand = -this.currentOperand
+    }
+
+    percent() {
+        if (this.currentOperand === '') return
+         this.currentOperand /= 100;
+      }
 
     chooseOperation(operation) {
         if (this.currentOperand === '') return
@@ -64,6 +72,9 @@ class Calculator {
         this.currentOperandTextElement.innerText = this.currentOperand
         if (this.operation != null) {
             this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`
+            if(currentOperandTextElement.length > maxDigitDisplay){
+                display.innerHTML = currentOperandTextElement.slice(0, maxDigitDisplay);
+            }
         } else {
             this.previousOperandTextElement.innerText = ''
         }
@@ -75,8 +86,12 @@ const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const deleteButton = document.querySelector('[data-delete]')
+const changeSignButton = document.querySelector('[data-change-sign]')
+const percentButton = document.querySelector('[data-percent]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
+
+const maxDigitDisplay = 11;
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
@@ -99,6 +114,16 @@ equalsButton.addEventListener('click', button => {
     calculator.updateDisplay()
 })
 
+changeSignButton.addEventListener('click', button => {
+    calculator.changeSign()
+    calculator.updateDisplay()
+})
+
+percentButton.addEventListener('click', button => {
+    calculator.percent()
+    calculator.updateDisplay()
+})
+
 allClearButton.addEventListener('click', button => {
     calculator.clear()
     calculator.updateDisplay()
@@ -108,3 +133,4 @@ deleteButton.addEventListener('click', button => {
     calculator.delete()
     calculator.updateDisplay()
 })
+
