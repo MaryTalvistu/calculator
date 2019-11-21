@@ -24,21 +24,21 @@ html, body {
   display: grid;
   justify-content: center;
   align-content: center;
-  min-height: 100vh;
+  min-height: 70vh;
   grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(7, 100px);   
+  grid-template-rows: repeat(8, 70px);   
 
 }
  .calculator .frame {
   background: linear-gradient(to bottom right, #aa9, #887 85%);
   border: 5px solid rgb(150, 163, 146);
   border-radius: 0.8em;
-  width: 420px;
-  height: 625px;
+  width: 410px;
+  height: 500px;
   top:50%;
   left:50%;
-  margin-top: 86px; 
-  margin-left:-10px;
+  margin-top: 65px; 
+  margin-left:-6px;
   }
 
   .calculator > button {
@@ -56,9 +56,7 @@ html, body {
     background-color: rgb(212, 212, 126, .50); 
   }
 
-  .spanTwo {
-    grid-row: span 2;
-  }
+
 
  .calculator .displayFrame {
     grid-column: 1 / -1;
@@ -68,19 +66,20 @@ html, body {
     align-items: flex-end;
     justify-content: space-around;
     flex-direction: column;
-    padding: 5px 10px 5px 10px;
+    padding-right: 20px;
     border:1px solid rgb(241, 241, 42);
     border-radius: 0.8em;
+    grid-row: span 2;
   }
 
  .displayFrame .previousOperand {
     font-family: 'digital-7';
-    font-size: 20px;
+    font-size: 40px;
     color: rgb(16, 235, 114, .6);
   }
 
   .displayFrame .currentOperand {
     font-family: 'digital-7';
-    font-size: 50px;
+    font-size: 100px;
     color: rgb(16, 235, 114);
   }
